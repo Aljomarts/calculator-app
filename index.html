@@ -650,11 +650,11 @@
   });
 
   // The house always wins: dealer plays a rigged strategy.
-  // Player is given only a small (~12%) chance to still pull a win/push.
+  // Player is given only a small (~21%) chance to still pull a win/push.
   function resolveDealer(){
     dealerHoleHidden = false;
     
-    // 1. Roll a 100-sided die to enforce a ~75% house win rate (adjust 75 as needed)
+    // 1. Roll a 100-sided die to enforce a ~79% house win rate (adjust 75 as needed)
     const houseEnforcedWin = Math.random() < 0.79; 
     
     if (houseEnforcedWin) {
@@ -710,7 +710,7 @@
     if(won){
       resultTitle.textContent = "You Actually Won!?";
       resultBanner.classList.remove('lose');
-      resultBanner.innerHTML = `Against all odds (${reason}), you win your free answer:<br><b>${pendingAnswer}</b>`;
+      resultBanner.innerHTML = `Against all odds, you won by a${reason}!`;
       resultFine.textContent = "This will not happen often. Enjoy it while it lasts.";
       const okBtn = document.createElement('button');
       okBtn.className = 'btn btn-gold';
@@ -723,7 +723,7 @@
     }else{
       resultTitle.textContent = "You Lost";
       resultBanner.classList.add('lose');
-      resultBanner.innerHTML = `The house wins (${reason}). Your free shot didn't pay off — unlocking the answer now costs $50.`;
+      resultBanner.innerHTML = `The house wins by a ${reason}. Your free shot didn't pay off — nice try loser.`;
       resultFine.textContent = "The answer you receive is not guaranteed to be correct.";
 
       const payFine = document.createElement('button');
